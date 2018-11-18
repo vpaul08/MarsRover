@@ -1,9 +1,8 @@
 package tests;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,11 +19,13 @@ public class PlateauTests {
 	@Test
 	public void plateauInvalidlyInitialized() {
 		Plateau p = Plateau.create(-2, 3);
+		assertNull(p);
 	}
 	
 	@Test
 	public void plateauValidlyInitialized() {
 		Plateau p = Plateau.create(2, 3);
+		assertNotNull(p);
 	}
 
 	@Test
