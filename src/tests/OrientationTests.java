@@ -18,21 +18,21 @@ public class OrientationTests {
 	@Test
 	public void testDefaultOrientation() {
 		Orientation o = new Orientation();
-		assertEquals("NORTH", o.toString());		
+		assertEquals("N", o.toString());		
 	}
 	
 	@Test
 	public void testValidRightRotation() {
 		Orientation o = new Orientation();
 		o.turnRight();
-		assertEquals("EAST", o.toString());		
+		assertEquals("E", o.toString());		
 	}
 	
 	@Test
 	public void testValidLeftRotation() {
 		Orientation o = new Orientation();
 		o.turnLeft();
-		assertEquals("WEST", o.toString());		
+		assertEquals("W", o.toString());		
 	}
 	
 	@Test

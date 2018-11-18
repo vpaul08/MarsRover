@@ -42,7 +42,7 @@ public class SequentialMovesTests {
 			
 			assertEquals(r.getCoordinates().getX(), 1);
 			assertEquals(r.getCoordinates().getY(), 3);
-			assertEquals(r.getOrientation().toString(), "NORTH");
+			assertEquals(r.getOrientation().toString(), "N");
 		}		
 	}
 	
@@ -69,7 +69,7 @@ public class SequentialMovesTests {
 			
 			assertEquals(r.getCoordinates().getX(), 5);
 			assertEquals(r.getCoordinates().getY(), 1);
-			assertEquals(r.getOrientation().toString(), "EAST");
+			assertEquals(r.getOrientation().toString(), "E");
 		}		
 	}
 	
@@ -95,7 +95,7 @@ public class SequentialMovesTests {
 			
 			assertEquals(r.getCoordinates().getX(), 1);
 			assertEquals(r.getCoordinates().getY(), 3);
-			assertEquals(r.getOrientation().toString(), "NORTH");
+			assertEquals(r.getOrientation().toString(), "N");
 		}		
 	}
 	
@@ -122,7 +122,7 @@ public class SequentialMovesTests {
 			
 			assertEquals(r.getCoordinates().getX(), 5);
 			assertEquals(r.getCoordinates().getY(), 1);
-			assertEquals(r.getOrientation().toString(), "EAST");
+			assertEquals(r.getOrientation().toString(), "E");
 		}		
 	}
 	
@@ -140,7 +140,7 @@ public class SequentialMovesTests {
 			
 			assertEquals(r.getCoordinates().getX(), 5);
 			assertEquals(r.getCoordinates().getY(), 1);
-			assertEquals(r.getOrientation().toString(), "EAST");
+			assertEquals(r.getOrientation().toString(), "E");
 		}		
 	}
 	

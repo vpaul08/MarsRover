@@ -99,9 +99,7 @@ public class Rover {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("The current location of the rover is: ")
-				.append(this.getCoordinates()).append(" Orientation: ")
-				.append(getOrientation());
+		builder.append(this.getCoordinates()).append(" ").append(getOrientation());
 		return builder.toString();
 	}
 

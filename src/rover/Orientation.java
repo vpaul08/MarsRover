@@ -65,13 +65,13 @@ public class Orientation {
 	public String toString() {
 		switch (this.value) {
 		case NORTH:
-			return "NORTH";
+			return "N";
 		case SOUTH:
-			return "SOUTH";
+			return "S";
 		case EAST:
-			return "EAST";
+			return "E";
 		case WEST:
-			return "WEST";
+			return "W";
 		default:
 			return "Invalid orientation!";
 		}

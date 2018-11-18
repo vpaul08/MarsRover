@@ -37,7 +37,7 @@ public class Coordinates {
 
 	@Override
 	public String toString() {
-		return "Coordinates: (" + this.getX() + ", " + this.getY() + ")";		
+		return this.getX() + " " + this.getY();		
 	}
 
 }
