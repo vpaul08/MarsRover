@@ -1,16 +1,29 @@
 package plateau;
 
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.fail;
+
 
 
 public class Plateau {
 	private Coordinates bottomLeft, topRight;
 	
-	public Plateau(int topRightX, int topRightY) throws Exception {
+	private Plateau(int topRightX, int topRightY) throws Exception {
 		bottomLeft = new Coordinates(0, 0);
 		if(topRightX < bottomLeft.getX() || topRightY < bottomLeft.getY()) {
 			throw new Exception("Invalid coordinates for the top right corner supplied!");
 		}
 		topRight = new Coordinates(topRightX, topRightY);
+	}
+	
+	public static Plateau create(int topRightX, int topRightY) {
+		Plateau p = null;
+		try {
+			p = new Plateau(topRightX, topRightY);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return p;
 	}
 	
 	@Override

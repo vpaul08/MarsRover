@@ -19,47 +19,29 @@ public class PlateauTests {
 	
 	@Test
 	public void plateauInvalidlyInitialized() {
-		Plateau p;
-		try {
-			p = new Plateau(-2, 3);
-			fail("Expected exception not thrown");
-		} catch (Exception e) {
-			assertSame(e.getMessage(), "Invalid coordinates for the top right corner supplied!");
-		}
+		Plateau p = Plateau.create(-2, 3);
 	}
 	
 	@Test
 	public void plateauValidlyInitialized() {
-		Plateau p;
-		try {
-			p = new Plateau(2, 3);
-			assertNotNull(p);
-		} catch (Exception e) {
-			fail("Didn't expect exception: " + e.getMessage());
-		}
+		Plateau p = Plateau.create(2, 3);
 	}
 
 	@Test
 	public void isCoordinateWithinBounds() {	
-		Plateau p;
+		Plateau p = Plateau.create(2, 3);
 		Coordinates c = new Coordinates(1, 1);
-		try {
-			p = new Plateau(2, 3);
+		if (p != null) {
 			assertTrue(p.isWithinBounds(c));
-		} catch (Exception e) {
-			fail("Didn't expect exception: " + e.getMessage());
 		}
 	}
 	
 	@Test
 	public void isCoordinateOutsideBounds() {	
-		Plateau p;
+		Plateau p = Plateau.create(2, 3);
 		Coordinates c = new Coordinates(3, 3);
-		try {
-			p = new Plateau(2, 3);
+		if (p != null) {
 			assertFalse(p.isWithinBounds(c));
-		} catch (Exception e) {
-			fail("Didn't expect exception: " + e.getMessage());
 		}
 	}
 

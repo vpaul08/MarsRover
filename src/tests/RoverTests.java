@@ -15,11 +15,7 @@ public class RoverTests {
 
 	@Before
 	public void setUp() throws Exception {
-		try {
-			p = new Plateau(2, 3);
-		} catch (Exception e) {
-			fail("Didn't expect exception: " + e.getMessage());
-		}
+		p = Plateau.create(2, 3);
 	}
 
 	@Test
@@ -30,7 +26,7 @@ public class RoverTests {
 		Rover r;
 		
 		if(p != null) {
-			r = new Rover(c, o, p);
+			r = Rover.create(c, o, p);
 			nextCoordinates = r.getNextCoordinates();
 			assertEquals(nextCoordinates.getY(), 2);
 			assertEquals(nextCoordinates.getX(), 1);
@@ -45,7 +41,7 @@ public class RoverTests {
 		Rover r;
 		
 		if(p != null) {
-			r = new Rover(c, o, p);
+			r = Rover.create(c, o, p);
 			nextCoordinates = r.move();
 			assertNotNull(nextCoordinates);
 		}		
@@ -59,7 +55,7 @@ public class RoverTests {
 		Rover r;
 		
 		if(p != null) {
-			r = new Rover(c, o, p);
+			r = Rover.create(c, o, p);
 			nextCoordinates = r.move();
 			assertNull(nextCoordinates);
 		}		

@@ -8,11 +8,25 @@ public class Rover {
 	private Orientation orientation;
 	private Plateau plateau;
 
-	public Rover(Coordinates coordinates, Orientation orientation,
-			Plateau plateau) {
-		this.coordinates = coordinates;
-		this.orientation = orientation;
-		this.plateau = plateau;
+	private Rover(Coordinates coordinates, Orientation orientation, Plateau plateau) throws Exception {
+		if(plateau.isWithinBounds(coordinates)) {
+			this.coordinates = coordinates;
+			this.orientation = orientation;
+			this.plateau = plateau;
+		} else {
+			throw new Exception("Invalid coordinates for Rover. The rover needs to be places within the plateau.");
+		}
+	}
+	
+	public static Rover create(Coordinates coordinates, Orientation orientation, Plateau plateau) {
+		Rover r = null;
+		try {
+			r = new Rover(coordinates, orientation, plateau); 
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return r;
+		
 	}
 
 	public Coordinates getCoordinates() {

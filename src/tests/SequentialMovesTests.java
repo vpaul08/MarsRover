@@ -17,11 +17,7 @@ public class SequentialMovesTests {
 
 	@Before
 	public void setUp() throws Exception {
-		try {
-			p = new Plateau(5, 5);
-		} catch (Exception e) {
-			fail("Didn't expect exception: " + e.getMessage());
-		}
+		p = Plateau.create(5, 5);
 	}
 
 	@Test
@@ -31,7 +27,7 @@ public class SequentialMovesTests {
 		Rover r;
 		
 		if(p != null) {
-			r = new Rover(c, o, p);
+			r = Rover.create(c, o, p);
 			
 			r.turnLeft();	//L
 			r.move();		//M
@@ -57,7 +53,7 @@ public class SequentialMovesTests {
 		Rover r;		
 		
 		if(p != null) {
-			r = new Rover(c, o, p);
+			r = Rover.create(c, o, p);
 			
 			r.move();		//M
 			r.move();		//M
@@ -84,7 +80,7 @@ public class SequentialMovesTests {
 		Rover r;
 		
 		if(p != null) {
-			r = new Rover(c, o, p);
+			r = Rover.create(c, o, p);
 			
 			r.handleInstruction(Instruction.L);
 			r.handleInstruction(Instruction.M);
@@ -110,7 +106,7 @@ public class SequentialMovesTests {
 		Rover r;		
 		
 		if(p != null) {
-			r = new Rover(c, o, p);
+			r = Rover.create(c, o, p);
 			
 			r.handleInstruction(Instruction.M);
 			r.handleInstruction(Instruction.M);
@@ -137,7 +133,7 @@ public class SequentialMovesTests {
 		Rover r;		
 		
 		if(p != null) {
-			r = new Rover(c, o, p);
+			r = Rover.create(c, o, p);
 			
 			r.handleSequentialInstructions("MMRMMRMRRM");
 			System.out.println(r);

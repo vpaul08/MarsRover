@@ -23,12 +23,7 @@ public class CommandsParser {
 		} else {
 			return null;
 		}
-		Plateau p = null;
-		try {
-			p = new Plateau(topRightX, topRightY);
-		} catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
+		Plateau p = Plateau.create(topRightX, topRightY);
 		return p;
 	}
 	
@@ -59,7 +54,7 @@ public class CommandsParser {
 			return null;
 		}
 		Coordinates coordinates = new Coordinates(x, y);
-		Rover r = new Rover(coordinates, orientation, plateau);
+		Rover r = Rover.create(coordinates, orientation, plateau);
 		return r;
 	}
 	
