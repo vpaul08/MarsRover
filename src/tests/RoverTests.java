@@ -60,7 +60,6 @@ public class RoverTests {
 		
 		if(p != null) {
 			r = new Rover(c, o, p);
-			r = new Rover(c, o, p);
 			nextCoordinates = r.move();
 			assertNull(nextCoordinates);
 		}		

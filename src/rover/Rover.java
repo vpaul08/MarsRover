@@ -38,6 +38,13 @@ public class Rover {
 		this.orientation = orientation;
 	}
 	
+	public void turnLeft() {
+		this.orientation.turnLeft();
+	}
+	
+	public void turnRight() {
+		this.orientation.turnRight();
+	}
 
 	public Coordinates getNextCoordinates() {
 		return Coordinates.sum(this.coordinates, orientation.getCoordinatesShift());
@@ -45,9 +52,22 @@ public class Rover {
 	
 	public Coordinates move() {
 		Coordinates nextCoordinates = this.getNextCoordinates();
-		if(plateau.isWithinBounds(nextCoordinates))
+		if(plateau.isWithinBounds(nextCoordinates)) {
+			this.setCoordinates(nextCoordinates);
 			return nextCoordinates;
+		}
 		return null;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder
+			.append("The current location of the rover is: ")
+			.append(this.getCoordinates())
+			.append(" Orientation: ")
+			.append(getOrientation());
+		return builder.toString();
 	}
 
 }
