@@ -14,11 +14,9 @@ public final class ControlStation {
 	private static volatile ControlStation instance = null;
 
 	private Plateau plateau;
-	private ArrayList<Rover> rovers;
+	private Rover rover;
 
-	private ControlStation() {
-		rovers = new ArrayList<Rover>();
-	}
+	private ControlStation() { }
 
 	public static ControlStation getInstance() {
 		if (instance == null) {
@@ -37,15 +35,33 @@ public final class ControlStation {
 			File file = new File(filePath);
 			FileReader fileReader = new FileReader(file);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
-			StringBuffer stringBuffer = new StringBuffer();
 			String line;
+			int ctr = 1;
 			while ((line = bufferedReader.readLine()) != null) {
-				stringBuffer.append(line);
-				stringBuffer.append("\n");
+				if (ctr == 1) {
+					Plateau p = CommandsParser.getPlateau(line);
+					if(p != null)
+						this.setPlateau(p);
+					else 
+						break;
+				} else {
+					if (ctr % 2 == 0) {
+						Rover r = CommandsParser.getRover(line, this.getPlateau());
+						if (r != null) {
+							this.setRover(r);
+						} else {							
+							break;						
+						}
+					} else {
+						if (CommandsParser.checkMoveInstructions(line)) {
+							this.getRover().handleSequentialInstructions(line);
+							System.out.println(this.getRover());
+						}
+					}
+				}
+				ctr++;
 			}
 			fileReader.close();
-			System.out.println("Contents of file:");
-			System.out.println(stringBuffer.toString());
 		} catch (IOException e) {
 			e.getMessage();
 		}
@@ -59,8 +75,12 @@ public final class ControlStation {
 		this.plateau = plateau;
 	}
 
-	public void addRover(Rover rover) {
-		rovers.add(rover);
+	public Rover getRover() {
+		return rover;
+	}
+
+	public void setRover(Rover rover) {
+		this.rover = rover;
 	}
 
 }

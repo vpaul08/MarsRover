@@ -11,7 +11,7 @@ public class Plateau {
 	private Plateau(int topRightX, int topRightY) throws Exception {
 		bottomLeft = new Coordinates(0, 0);
 		if(topRightX < bottomLeft.getX() || topRightY < bottomLeft.getY()) {
-			throw new Exception("Invalid coordinates for the top right corner supplied!");
+			throw new Exception("Plateau: Invalid coordinates for the top right corner supplied!");
 		}
 		topRight = new Coordinates(topRightX, topRightY);
 	}

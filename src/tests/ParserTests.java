@@ -1,11 +1,15 @@
 package tests;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import managers.CommandsParser;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import plateau.Plateau;
+import rover.Rover;
 
 public class ParserTests {
 
@@ -42,5 +46,20 @@ public class ParserTests {
 	public void testInvalidMovesSequenceSpacesBetweenCharacters() {
 		assertFalse(CommandsParser.checkMoveInstructions("MMMMP LR"));
 	}
+	
+	@Test
+	public void testGetPlateau() {
+		Plateau p = CommandsParser.getPlateau("5 5");
+		assertNotNull(p);
+	}
+	
+	@Test
+	public void testGetRover() {
+		Plateau p = CommandsParser.getPlateau("5 5");
+		Rover r = null;
+		r = CommandsParser.getRover("4 3 N", p);
+		assertNotNull(r);
+	}
+	
 
 }
