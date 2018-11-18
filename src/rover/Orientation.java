@@ -18,17 +18,11 @@ public class Orientation {
 	}
 
 	public void turnRight() {
-		if (this.value == 4)
-			this.value = 1;
-		else
-			this.value += 1;
+		this.value = this.value == 4 ? 1 : this.value + 1;
 	}
 
 	public void turnLeft() {
-		if (this.value == 1)
-			this.value = 4;
-		else
-			this.value -= 1;
+		this.value = this.value == 1 ? 4 : this.value - 1;
 	}
 
 	public int getValue() {
@@ -55,6 +49,16 @@ public class Orientation {
 			break;
 		}
 		return coordinates;
+	}
+	
+	public static Orientation getOrientationFromCode(char code) {
+		switch(code) {
+		case 'N': return new Orientation(NORTH);
+		case 'S': return new Orientation(SOUTH);
+		case 'E': return new Orientation(EAST);
+		case 'W': return new Orientation(WEST);
+		default: return null;
+		}
 	}
 
 	@Override

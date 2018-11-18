@@ -130,6 +130,24 @@ public class SequentialMovesTests {
 		}		
 	}
 	
+	@Test
+	public void testMoveSequentialInstructions() {		
+		Coordinates c = new Coordinates(3, 3);
+		Orientation o = new Orientation(Orientation.EAST);
+		Rover r;		
+		
+		if(p != null) {
+			r = new Rover(c, o, p);
+			
+			r.handleSequentialInstructions("MMRMMRMRRM");
+			System.out.println(r);
+			
+			assertEquals(r.getCoordinates().getX(), 5);
+			assertEquals(r.getCoordinates().getY(), 1);
+			assertEquals(r.getOrientation().toString(), "EAST");
+		}		
+	}
+	
 	
 
 }

@@ -61,6 +61,12 @@ public class Rover {
 		return null;
 	}
 
+	public void handleSequentialInstructions(String str) {
+		for(char c : str.toCharArray()) {
+		    this.handleInstruction(Instruction.valueOf(c + ""));
+		}	
+	}
+	
 	public void handleInstruction(Instruction instruction) {
 		switch (instruction) {
 		case R:
@@ -72,6 +78,7 @@ public class Rover {
 		case M:
 			this.move();
 			break;
+		default: break;
 		}
 	}
 
