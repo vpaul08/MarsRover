@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import plateau.Coordinates;
+
 import rover.Orientation;
 
 public class OrientationTests {
@@ -55,6 +57,38 @@ public class OrientationTests {
 		o.turnLeft();
 		String finalOrientation = o.toString();
 		assertSame(initialOrientation, finalOrientation);		
+	}
+	
+	@Test
+	public void testCoordinatesShiftForNorth() {
+		Orientation o = new Orientation(Orientation.NORTH);
+		Coordinates coordinatesShift = o.getCoordinatesShift();
+		assertEquals(coordinatesShift.getY(), 1);
+		assertEquals(coordinatesShift.getX(), 0);
+	}
+	
+	@Test
+	public void testCoordinatesShiftForSouth() {
+		Orientation o = new Orientation(Orientation.SOUTH);
+		Coordinates coordinatesShift = o.getCoordinatesShift();
+		assertEquals(coordinatesShift.getY(), -1);
+		assertEquals(coordinatesShift.getX(), 0);
+	}
+	
+	@Test
+	public void testCoordinatesShiftForEast() {
+		Orientation o = new Orientation(Orientation.EAST);
+		Coordinates coordinatesShift = o.getCoordinatesShift();
+		assertEquals(coordinatesShift.getY(), 0);
+		assertEquals(coordinatesShift.getX(), 1);
+	}
+
+	@Test
+	public void testCoordinatesShiftForWest() {
+		Orientation o = new Orientation(Orientation.WEST);
+		Coordinates coordinatesShift = o.getCoordinatesShift();
+		assertEquals(coordinatesShift.getY(), 0);
+		assertEquals(coordinatesShift.getX(), -1);
 	}
 
 }

@@ -5,10 +5,10 @@ import plateau.Plateau;
 
 public class Rover {
 	private Coordinates coordinates;
-	private int orientation;
+	private Orientation orientation;
 	private Plateau plateau;
 	
-	public Rover(Coordinates coordinates, int orientation, Plateau plateau) {
+	public Rover(Coordinates coordinates, Orientation orientation, Plateau plateau) {
 		this.coordinates = coordinates;
 		this.orientation = orientation;
 		this.plateau = plateau;
@@ -30,12 +30,24 @@ public class Rover {
 		this.plateau = plateau;
 	}
 
-	public int getOrientation() {
+	public Orientation getOrientation() {
 		return orientation;
 	}
 
-	public void setOrientation(int orientation) {
+	public void setOrientation(Orientation orientation) {
 		this.orientation = orientation;
+	}
+	
+
+	public Coordinates getNextCoordinates() {
+		return Coordinates.sum(this.coordinates, orientation.getCoordinatesShift());
+	}
+	
+	public Coordinates move() {
+		Coordinates nextCoordinates = this.getNextCoordinates();
+		if(plateau.isWithinBounds(nextCoordinates))
+			return nextCoordinates;
+		return null;
 	}
 
 }

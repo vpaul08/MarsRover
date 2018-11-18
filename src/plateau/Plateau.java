@@ -1,8 +1,5 @@
 package plateau;
 
-import java.util.ArrayList;
-
-import rover.Rover;
 
 
 public class Plateau {
@@ -24,6 +21,16 @@ public class Plateau {
 		status.append("The plateu grid has the top right coordinates as " + topRight.getX() + ", " + topRight.getY())
 		.append("\n There are a total of " + totalRows + " rows and " + totalColumns + " columns.");
 		return status.toString();
+	}
+	
+	public boolean isWithinBounds(Coordinates c) {
+		if (
+			c.getX() >= bottomLeft.getX() && c.getX() <= topRight.getX() &&
+			c.getY() >= bottomLeft.getY() && c.getY() <= topRight.getY()
+		) {
+			return true;
+		}			
+		return false;
 	}
 
 }

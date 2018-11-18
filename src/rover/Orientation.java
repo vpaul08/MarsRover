@@ -1,5 +1,7 @@
 package rover;
 
+import plateau.Coordinates;
+
 public class Orientation {
 	public static final int NORTH = 1;
 	public static final int EAST = 2;
@@ -34,6 +36,29 @@ public class Orientation {
 	public int getValue() {
 		return this.value;
 	}
+	
+	public Coordinates getCoordinatesShift() {
+		Coordinates coordinates;
+		switch(this.value){
+			case NORTH: 
+				coordinates = new Coordinates(0,1);
+				break;
+			case SOUTH: 
+				coordinates = new Coordinates(0,-1);
+				break;
+			case EAST:
+				coordinates = new Coordinates(1,0);
+				break;
+			case WEST:
+				coordinates = new Coordinates(-1,0);
+				break;
+			default:
+				coordinates = new Coordinates(0,0);
+				break;
+		}
+		return coordinates;
+	}
+	
 	
 	@Override
 	public String toString() {
