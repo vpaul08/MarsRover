@@ -8,7 +8,13 @@ public class AppRunner {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		ControlStation.getInstance().parseFile("SampleData6.txt");
+		if(args.length > 0) {
+			ControlStation.getInstance().parseFile(args[0]);
+		} else {
+			System.out.println("Running from sample data.");
+			ControlStation.getInstance().parseFile("SampleData1.txt");
+		}	
+		
 	}
 
 }
