@@ -19,45 +19,45 @@ public class ParserTests {
 
 	@Test
 	public void testNullMovesSequence() {
-		assertTrue(CommandsParser.checkMoveInstructions(null));
+		assertTrue(CommandsParser.validateMoveInstructions(null));
 	}
 	
 	@Test
 	public void testEmptyMovesSequence() {
-		assertTrue(CommandsParser.checkMoveInstructions(""));
+		assertTrue(CommandsParser.validateMoveInstructions(""));
 	}
 	
 	@Test
 	public void testSpaceOnlyMovesSequence() {
-		assertTrue(CommandsParser.checkMoveInstructions(" "));
+		assertTrue(CommandsParser.validateMoveInstructions(" "));
 	}
 	
 	@Test
 	public void testValidMovesSequence() {
-		assertTrue(CommandsParser.checkMoveInstructions("MMMMLR"));
+		assertTrue(CommandsParser.validateMoveInstructions("MMMMLR"));
 	}
 	
 	@Test
 	public void testInvalidMovesSequenceExtraCharacters() {
-		assertFalse(CommandsParser.checkMoveInstructions("MMMMPLR"));
+		assertFalse(CommandsParser.validateMoveInstructions("MMMMPLR"));
 	}
 	
 	@Test
 	public void testInvalidMovesSequenceSpacesBetweenCharacters() {
-		assertFalse(CommandsParser.checkMoveInstructions("MMMMP LR"));
+		assertFalse(CommandsParser.validateMoveInstructions("MMMMP LR"));
 	}
 	
 	@Test
 	public void testGetPlateau() {
-		Plateau p = CommandsParser.getPlateau("5 5");
+		Plateau p = CommandsParser.createPlateau("5 5");
 		assertNotNull(p);
 	}
 	
 	@Test
 	public void testGetRover() {
-		Plateau p = CommandsParser.getPlateau("5 5");
+		Plateau p = CommandsParser.createPlateau("5 5");
 		Rover r = null;
-		r = CommandsParser.getRover("4 3 N", p);
+		r = CommandsParser.createRover("4 3 N", p);
 		assertNotNull(r);
 	}
 	

@@ -1,0 +1,12 @@
+It seems that there's some problem with the format of the input file. Your input data file should be of the following format. 
+
+Here the first line should be the top-right coordinates of the plateau. 
+Next line onwards it should alternate between Rover initialization and movement instructions.
+You can add as many rovers with their movement instructions. 
+However, there should be no empty lines between the instructions.
+
+5 5
+1 2 N
+LMLMLMLMM
+3 3 E
+MMRMMRMRRM

@@ -6,7 +6,7 @@ import rover.Orientation;
 import rover.Rover;
 
 public class CommandsParser {
-	public static Plateau getPlateau(String str) {
+	public static Plateau createPlateau(String str) {
 		int topRightX, topRightY;
 		if(str != null && str.length() > 0) {
 			String[] plateauCoordinatesArray = str.split(" ");
@@ -17,7 +17,7 @@ public class CommandsParser {
 				topRightX = Integer.parseInt(plateauCoordinatesArray[0]); 
 				topRightY = Integer.parseInt(plateauCoordinatesArray[1]); 
 			} catch (Exception e) {
-				e.getMessage();
+				e.printStackTrace();
 				return null;
 			}
 		} else {
@@ -27,7 +27,7 @@ public class CommandsParser {
 		return p;
 	}
 	
-	public static Rover getRover(String str, Plateau plateau) {
+	public static Rover createRover(String str, Plateau plateau) {
 		int x, y;
 		Orientation orientation;
 		if(str != null && str.length() > 0) {
@@ -39,7 +39,7 @@ public class CommandsParser {
 				x = Integer.parseInt(roverInitializationArray[0]); 
 				y = Integer.parseInt(roverInitializationArray[1]); 
 			} catch (Exception e) {
-				e.getMessage();
+				e.printStackTrace();
 				return null;
 			}
 			if(roverInitializationArray[2].length() > 1) {
@@ -58,7 +58,7 @@ public class CommandsParser {
 		return r;
 	}
 	
-	public static boolean checkMoveInstructions(String str) {
+	public static boolean validateMoveInstructions(String str) {
 		if(str != null && str.length() > 0) {
 			str = str.trim();
 			if (str.matches("[LRM]*")) {

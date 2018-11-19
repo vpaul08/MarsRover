@@ -39,23 +39,28 @@ public final class ControlStation {
 			int ctr = 1;
 			while ((line = bufferedReader.readLine()) != null) {
 				if (ctr == 1) {
-					Plateau p = CommandsParser.getPlateau(line);
+					Plateau p = CommandsParser.createPlateau(line);
 					if(p != null)
 						this.setPlateau(p);
-					else 
+					else {
+						this.printCommandInstructions();
 						break;
+					}
 				} else {
 					if (ctr % 2 == 0) {
-						Rover r = CommandsParser.getRover(line, this.getPlateau());
+						Rover r = CommandsParser.createRover(line, this.getPlateau());
 						if (r != null) {
 							this.setRover(r);
-						} else {							
+						} else {
+							this.printCommandInstructions();
 							break;						
 						}
 					} else {
-						if (CommandsParser.checkMoveInstructions(line)) {
+						if (CommandsParser.validateMoveInstructions(line)) {
 							this.getRover().handleSequentialInstructions(line);
 							System.out.println(this.getRover());
+						} else {
+							this.printCommandInstructions();
 						}
 					}
 				}
@@ -63,8 +68,24 @@ public final class ControlStation {
 			}
 			fileReader.close();
 		} catch (IOException e) {
-			e.getMessage();
+			e.printStackTrace();
 		}
+	}
+	
+	public void printCommandInstructions() {
+		try {
+			File file = new File("Instructions.txt");
+			FileReader fileReader = new FileReader(file);
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			String line;
+			while ((line = bufferedReader.readLine()) != null) {
+				System.out.println(line);
+			}
+			fileReader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	public Plateau getPlateau() {
